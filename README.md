@@ -1,7 +1,6 @@
 # Gewichteter Matroid-Schnitt – der billige Weg – Streamlit-Demo
 
-<!-- TODO nach dem Deploy: direkt hierher den Live-Link setzen (Leerzeile davor und danach):
-**[→ Demo live ausprobieren](https://sebastianhanisch-gewichteter-schnitt-demo.streamlit.app/)** -->
+**[→ Demo live ausprobieren](https://sebastianhanisch-gewichteter-schnitt-demo.streamlit.app/)**
 
 Achtes Stück der Reihe **Matroide und Submodularität** (Bereich Kombinatorik) in der „Konzepte“-Reihe für die Website „Sebastian Hanisch – Operations Research und Machine Learning“. Die Demo macht aus dem Matroid-Schnitt von Stück 7 den **gewichteten**: Jedes Element hat Kosten, gesucht ist zu jeder Elementzahl k die **billigste** gemeinsame unabhängige Menge I_k. Im Austauschgraphen bekommt jedes Element außerhalb von I die Länge **+Kosten**, jedes Element in I die Länge **−Kosten**; der **kürzeste Weg** (Bellman–Ford, bei gleicher Länge der mit den wenigsten Knoten) macht aus I_k das billigste I_{k+1}. Das **Zertifikat** ist „kein Kreis negativer Länge“. Dazu der Tab **Stand der Forschung** als Literaturübersicht (nicht nachgebaut).
 
