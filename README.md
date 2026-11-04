@@ -13,7 +13,7 @@ Fast jede Anwendung des Matroid-Schnitts hat Kosten: den **billigsten** Regenbog
 
 ## Befunde und Korrekturen gegenüber dem Plan
 
-- **Die Wegwahl ohne Knotenzahl scheitert häufiger als in der Messung vor dem Bau:** Damals war „falsch“ nur ein zu hohes Gewicht; die App prüft strenger, dass jedes I_k auch **in beiden Matroiden unabhängig** ist. Dann scheitert die Wegwahl nur nach der Länge schon bei n = 4 in 16 von 9 248 Läufen und bei n = 5 in 31 (Erzeugungsreihenfolge) bzw. 30 (umgekehrt) von 6 000; bei 6 000 Zufallspaaren mit Kosten aus {0, 1, 2} sind es 48 und 51 Paare (rund 0,8 %). Jedes Mal ist das Ergebnis eine Menge, die **nicht mehr gemeinsam unabhängig ist**: der Weg war ein Umweg mit einer Abkürzung. Mit der Knotenzahl-Regel gibt es **keinen** Fehler.
+- **Die Wegwahl ohne Knotenzahl scheitert häufiger als in der Messung vor dem Bau:** Damals war „falsch“ nur ein zu hohes Gewicht; die App prüft strenger, dass jedes I_k auch **in beiden Matroiden unabhängig** ist. Dann scheitert die Wegwahl nur nach der Länge (bei diesen zwei Pfeil-Reihenfolgen; die genauen Zahlen hängen von der Reihenfolge ab, die Größenordnung nicht) schon bei n = 4 in 16 von 9 248 Läufen und bei n = 5 in 31 (Erzeugungsreihenfolge) bzw. 30 (umgekehrt) von 6 000; bei 6 000 Zufallspaaren mit Kosten aus {0, 1, 2} sind es 48 und 51 Paare (rund 0,8 %). Jedes Mal ist das Ergebnis eine Menge, die **nicht mehr gemeinsam unabhängig ist**: der Weg war ein Umweg mit einer Abkürzung. Mit der Knotenzahl-Regel gibt es **keinen** Fehler.
 - **Festes Gleichstandsbeispiel:** 5 Elemente (a bis e), Kosten 2, 2, 0, 0, 0, a eine Schleife in M1, aus der Suche über 12 000 Zufallspaare (kleinste Zahl gemeinsamer Mengen: 10).
 - **Greedy nach Kosten scheitert hier überwiegend an der Elementzahl,** nicht an den Kosten (Experiment 1).
 - **`scipy` und `networkx` nur in den Tests:** `scipy.optimize.linear_sum_assignment` (Ungarische Methode) und `networkx.minimum_spanning_arborescence` (Chu-Liu/Edmonds) sind die Gegenproben; zur Laufzeit reichen numpy und plotly.
@@ -46,14 +46,14 @@ Alle Zahlen stehen in `tests/test_claims.py` und werden dort mit den Funktionen 
 
 | Frage | Befund |
 |---|---|
-| **Alle Paare und Läufe** (2 bis 4 Elemente alle, 5 Elemente 3 000 Zufallspaare; je zwei Kostenvektoren: 50, 512, 9 248, 6 000 Läufe, zusammen **15 810**) | Mit der Knotenzahl-Regel liefert das Verfahren in **allen 15 810** Läufen für **jede** Elementzahl die billigste gemeinsame Menge; ohne die Regel nur in **15 763** (Pfeile in Erzeugungsreihenfolge) bzw. **15 764** Läufen (umgekehrt). |
+| **Alle Paare und Läufe** (2 bis 4 Elemente alle, 5 Elemente 3 000 Zufallspaare; je zwei Kostenvektoren: 50, 512, 9 248, 6 000 Läufe, zusammen **15 810**) | Mit der Knotenzahl-Regel liefert das Verfahren in **allen 15 810** Läufen für **jede** Elementzahl die billigste gemeinsame Menge; ohne die Regel nur in **15 763** (Pfeile in Erzeugungsreihenfolge) bzw. **15 764** Läufen (umgekehrt); diese beiden Zahlen gelten für die zwei Pfeil-Reihenfolgen der Demo. |
 | **Konvexität** | Die kleinsten Kosten je Elementzahl sind bei allen **7 905** geprüften Paaren konvex. |
 | **Extrem gleich kein negativer Kreis** (alle gemeinsamen Mengen aller Paare bis 4 Elemente) | Bei **21 904 von 21 904** gemeinsamen Mengen (44, 695, 21 165) stimmen die zwei Aussagen überein. |
 | **Gleichstandsbeispiel** (5 Elemente, Kosten 2, 2, 0, 0, 0) | Mit der Regel: I_0 bis I_3 gemeinsam unabhängig, Kosten 0, 0, 0, 2. Nur nach der Länge: Lauf endet bei 2 Elementen mit {d, e}, das **nicht** in beiden Matroiden unabhängig ist. |
 | **Gleichstand bei Zufallspaaren** (6 000 Paare mit 5 Elementen, Kosten aus {0, 1, 2}) | Mit Knotenzahl-Regel **0** Fehler, nur nach der Länge **48** (Pfeile in Erzeugungsreihenfolge) bzw. **51** Paare (umgekehrt); jedes Mal ist die erzeugte Menge nicht gemeinsam unabhängig. |
 | **Greedy nach Kosten auf Plänen** (20 Pläne je Größe, n = 6, 7, 8) | Regenbogen mit n − 1 Farben: bleibt vor der größten Elementzahl stecken bei **7, 9, 9** Plänen; bei gleicher Größe teurer bei 1 von 13, 0 von 11, 2 von 11. Zuordnung: stecken bei **11, 10, 15**; teurer bei 2 von 9, 2 von 10, 1 von 5. Arboreszenz (30 Kostenvektoren): stecken bei **4**, teurer bei 2 von 26. |
 | **Gegenproben** (Tests) | Die Zuordnung hat gleiche Elementzahl und **gleiche Kosten** wie die Ungarische Methode bei **60 von 60** Plänen (n = 6, 7, 8; Seeds 0 bis 19); die Arboreszenz gleiche Kosten wie Chu-Liu/Edmonds bei **30 von 30** Kostenvektoren. |
-| **Tauschkreis** | Bei der teuersten gemeinsamen Menge mit 2 Elementen im Standardfall (Kosten 95, billigste 17) hat der Austauschgraph einen Kreis der Länge −44 mit 2 Elementen; nach 3 Tauschkreisen sind die Kosten bei 17. |
+| **Tauschkreis** | Bei der teuersten gemeinsamen Menge mit 2 Elementen im Standardfall (Kosten 95, billigste 17) hat der Austauschgraph einen Kreis der Länge −44 mit 2 Elementen; nach 3 Tauschkreisen sind die Kosten bei 17 (die Zahl der Schritte hängt davon ab, welcher negative Kreis zuerst gefunden wird). |
 
 ## Ehrliche Grenzen
 

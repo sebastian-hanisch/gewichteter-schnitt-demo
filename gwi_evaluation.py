@@ -397,7 +397,7 @@ RESEARCH_EXACT = (
 )
 RESEARCH_OTHER = (
     {"Jahr": "1975, 1986", "Arbeit": "Lawler; Cunningham: ungewichtet", "Ergebnis": "Verbesserungswege im Austauschgraphen; Cunningham: kürzere Wege, O(n r^1,5) Aufrufe (Stück 7)", "Orakel": "Unabhängigkeit"},
-    {"Jahr": "2021 bis 2023", "Arbeit": "Blikstad u. a.: ungewichtet unterquadratisch", "Ergebnis": "Randomisiert Õ(n^{6/5} r^{3/5}); Õ(n r) mit dynamischem Rangorakel (STOC 2023)", "Orakel": "Unabhängigkeit, Rang"},
+    {"Jahr": "2021 bis 2023", "Arbeit": "Blikstad u. a.: ungewichtet unterquadratisch", "Ergebnis": "STOC 2021: randomisiert Õ(n^{6/5} r^{3/5}); STOC 2023 (Blikstad, Mukhopadhyay, Nanongkai, Tu): Õ(n√r) mit dynamischem Rangorakel", "Orakel": "Unabhängigkeit, Rang"},
     {"Jahr": "2025", "Arbeit": "Terao (WADS; arXiv 2410.18820): Näherung", "Ergebnis": "Deterministische (2/3 − ε)-Näherung mit O(n/ε + r log r) Unabhängigkeitsanfragen, ungewichtet", "Orakel": "Unabhängigkeit"},
     {"Jahr": "2026", "Arbeit": "Dudeja, Grilnberger (arXiv 2602.15702): gewichtet auf ungewichtet", "Ergebnis": "Aus einer α-Näherung für den ungewichteten Schnitt wird eine α(1 − ε)-Näherung für den gewichteten, Faktor log W", "Orakel": "Unabhängigkeit"},
 )

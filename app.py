@@ -105,7 +105,7 @@ with st.container(key="kopf"):
     st.title("⚖️ Gewichteter Matroid-Schnitt")
 st.markdown(
     """
-Stück 7 suchte die **größte** Menge, die in zwei Matroiden unabhängig ist. Jetzt hat jedes Element **Kosten**, und gesucht ist zu jeder Elementzahl k die **billigste** gemeinsame Menge I_k. Der Austauschgraph bleibt derselbe; jedes Element bekommt eine **Länge**: **+Kosten** außerhalb von I, **−Kosten** in I. Der **kürzeste Weg** von den Quellen zu den Senken (bei gleicher Länge der mit den wenigsten Knoten) macht aus I_k das billigste I_{k+1}. Weil Längen negativ sind, braucht man **Bellman–Ford**. Das **Zertifikat** ist: kein Kreis negativer Länge. Bei Zuordnung und Arboreszenz kommt dasselbe heraus wie bei der **Ungarischen Methode** und bei **Chu-Liu/Edmonds**.
+Stück 7 suchte die **größte** Menge, die in zwei Matroiden unabhängig ist. Jetzt hat jedes Element **Kosten**, und gesucht ist zu jeder Elementzahl k die **billigste** gemeinsame Menge I_k. Der Austauschgraph bleibt derselbe; jedes Element bekommt eine **Länge**: **+Kosten** außerhalb von I, **−Kosten** in I. Der **kürzeste Weg** von den Quellen zu den Senken (bei gleicher Länge der mit den wenigsten Knoten) macht aus I_k das billigste I_{k+1}. Weil Längen negativ sind, nimmt man **Bellman–Ford**. Das **Zertifikat** ist: kein Kreis negativer Länge. Bei Zuordnung und Arboreszenz kommt dasselbe heraus wie bei der **Ungarischen Methode** und bei **Chu-Liu/Edmonds**.
 
 Dies ist das **achte Stück** der Reihe „Matroide und Submodularität“. Weiter unten: vier Experimente (🔬), eine **Spielwiese**, der Tab **📚 Stand der Forschung**, **🚧 Wo die Annahmen enden** und der Expander **📐 Mathematische Formulierung**.
 """
